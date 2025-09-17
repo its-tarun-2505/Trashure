@@ -1,0 +1,127 @@
+/* container */
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Hero */
+.hero {
+  display: grid;
+  grid-template-columns: 1fr 420px;
+  gap: 40px;
+  align-items: center;
+  padding: 60px 0;
+}
+.heroLeft { }
+.heroRight { }
+.heroTitle {
+  font-size: 44px;
+  line-height: 1.03;
+  margin: 0 0 16px;
+  color: #21312a;
+  font-weight: 800;
+}
+.heroSub {
+  color: #6b7280;
+  margin-bottom: 20px;
+  max-width: 520px;
+}
+.ecCta {
+  background: #2f8a3a;
+  color: #fff;
+  padding: 14px 20px;
+  border-radius: 10px;
+  border: none;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 6px 18px rgba(47,138,58,0.18);
+}
+.heroCardImg {
+  height: 260px;
+  border-radius: 14px;
+  background: linear-gradient(180deg,#d3e6d7,#eaf4ea);
+  box-shadow: 0 12px 30px rgba(20,30,20,0.08);
+  overflow: hidden;
+}
+.image{
+  width: 100%;
+  height: 100%;
+  
+}
+
+/* How it works */
+.howItWorks {
+  text-align: center;
+  padding: 40px 0 30px;
+}
+.howItWorks h2 { margin: 0 0 6px; font-size: 28px; }
+.muted { color: #6b7280; margin-bottom: 24px; }
+
+/* steps */
+.stepsGrid {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 20px;
+  margin-top: 12px;
+}
+.stepCard {
+  background: #fff;
+  border-radius: 12px;
+  padding: 22px;
+  box-shadow: 0 8px 20px rgba(16,24,32,0.16);
+  text-align: left;
+}
+.stepIllustration {
+  height: 140px;
+  border-radius: 10px;
+  margin-bottom: 14px;
+  background-size: cover;
+  background-position: center;
+  overflow: hidden;
+}
+.request { background: linear-gradient(135deg,#fdeecf,#ffe8d6); }
+.collect { background: linear-gradient(135deg,#eaf6f0,#d7f0e0); }
+.recycle { background: linear-gradient(135deg,#e6f3e9,#dff1e4); }
+
+/* Why choose */
+.why {
+  padding: 54px 0 80px;
+  text-align: center;
+}
+.featuresGrid {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 20px;
+  margin-top: 20px;
+}
+.featureCard {
+  background: #fff;
+  padding: 18px;
+  border-radius: 12px;
+  box-shadow: 0px 8px 20px rgba(16,24,32,0.15);
+  text-align: left;
+}
+.featureImg {
+  height: 140px;
+  border-radius: 8px;
+  background: linear-gradient(180deg,#eaf6f0,#dff1e4);
+  margin-bottom: 12px;
+  overflow: hidden;
+}
+.demoCta { margin-top: 28px; }
+.ecBtnOutlineLarge {
+  padding: 10px 20px;
+  border-radius: 999px;
+  border: 1px solid #043775;
+  background: #fff;
+  cursor: pointer;
+  color: blue;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .hero { grid-template-columns: 1fr; }
+  .stepsGrid, .featuresGrid { grid-template-columns: 1fr; }
+  .container { padding: 0 16px; }
+}

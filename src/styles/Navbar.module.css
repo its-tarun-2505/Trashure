@@ -1,0 +1,44 @@
+.navbar {
+  background: transparent;
+  padding: 20px 0;
+  /* position: fixed; */
+  width: 100%;
+  border-bottom: 1px solid rgba(0, 128, 0, 0.096);
+  z-index: 100;
+}
+.container {
+  /* max-width: 1100px; */
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.brand .logo {
+  font-weight: 800;
+  font-size: 20px;
+  color: #1f3d2d;
+}
+.actions button + button { margin-left: 12px; }
+.btnOutline {
+  padding: 8px 14px;
+  border-radius: 999px;
+  border: 1px solid #e2e8f0;
+  background: #fff;
+  color: #2d3741;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  margin: 0 5px;
+}
+.btnPrimary {
+  text-decoration: none;
+  margin: 0 5px;
+  padding: 8px 14px;
+  border-radius: 999px;
+  border: 1px solid #2f8a3a;
+  background: #2f8a3a;
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+}

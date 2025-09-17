@@ -1,0 +1,119 @@
+.wrap {
+  background: #f7faf6;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+}
+
+.cardWrap {
+  width: 100%;
+  max-width: 980px;
+  background: #ffffff;
+  border-radius: 14px;
+  padding: 36px;
+  box-shadow: 0 10px 30px rgba(16,24,32,0.08);
+  text-align: center;
+}
+
+.title {
+  color: #18321f;
+  font-size: 28px;
+  margin: 0 0 8px;
+  font-weight: 800;
+}
+
+.subtitle {
+  color: #55606a;
+  margin: 0 0 24px;
+  font-size: 15px;
+}
+
+/* grid of role cards */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  margin-top: 12px;
+}
+
+/* clickable card */
+.card {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  text-decoration: none;
+  background: linear-gradient(180deg, #ffffff, #f6fff5);
+  border: 1px solid #e6efe6;
+  border-radius: 12px;
+  padding: 18px;
+  transition: transform 180ms ease, box-shadow 180ms ease;
+  color: inherit;
+  cursor: pointer;
+}
+
+.card:hover,
+.card:focus {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 30px rgba(20,30,20,0.12);
+  outline: none;
+}
+
+.iconWrap {
+  width: 72px;
+  height: 72px;
+  min-width: 72px;
+  border-radius: 12px;
+  display: grid;
+  place-items: center;
+  background: linear-gradient(180deg, #eaf6ef, #dff0e4);
+  border: 1px solid rgba(47,138,58,0.08);
+}
+
+.icon {
+  color: #2f8a3a;
+  width: 36px;
+  height: 36px;
+}
+
+.cardBody {
+  text-align: left;
+  flex: 1;
+}
+
+.cardTitle {
+  margin: 0 0 6px;
+  font-size: 18px;
+  color: #16311f;
+  font-weight: 700;
+}
+
+.cardText {
+  margin: 0;
+  color: #6b7280;
+  font-size: 14px;
+}
+
+/* small explanatory note */
+.note {
+  margin-top: 18px;
+  color: #9aa3a0;
+  font-size: 13px;
+}
+
+/* Responsive */
+@media (max-width: 800px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+  .cardWrap {
+    padding: 24px;
+  }
+  .title { font-size: 24px; }
+}
+
+/* high contrast / focus */
+.card:focus-visible {
+  box-shadow: 0 0 0 3px rgba(47,138,58,0.14);
+}

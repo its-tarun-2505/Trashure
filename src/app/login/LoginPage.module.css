@@ -1,0 +1,125 @@
+.pageWrap {
+  min-height: 100%;
+  background: #f6faf5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 16px;
+}
+
+.card {
+  width: 100%;
+  max-width: 460px;
+  background: #fff;
+  border-radius: 12px;
+  padding: 28px;
+  box-shadow: 0 18px 40px rgba(16,24,32,0.07);
+  text-align: center;
+}
+
+.title {
+  font-size: 22px;
+  font-weight: 800;
+  color: #16311f;
+  margin: 0 0 6px;
+}
+
+.subtitle {
+  font-size: 13px;
+  color: #6b7280;
+  margin: 0 0 18px;
+}
+
+.sectionLabel {
+  display: block;
+  text-align: left;
+  font-size: 14px;
+  color: #21312a;
+  margin: 6px 0 8px;
+}
+
+.roleGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.roleBtn {
+  background: #fff;
+  border: 1px solid #e6efe6;
+  color: #21312a;
+  padding: 10px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: box-shadow .15s, transform .12s;
+}
+
+.roleBtn:hover { transform: translateY(-2px); box-shadow: 0 8px 18px rgba(16,24,32,0.06); }
+
+.roleBtn.active {
+  background: linear-gradient(180deg,#f1fbef,#eaf6ef);
+  border: 1px solid rgba(47,138,58,0.3);
+  color: #1f4f2a;
+  box-shadow: 0 8px 20px rgba(47,138,58,0.08);
+}
+
+.form { margin-top: 6px; display: flex; flex-direction: column; gap: 12px; }
+
+.field {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #fafafa;
+  border: 1px solid #eef3ec;
+  padding: 10px 12px;
+  border-radius: 8px;
+}
+
+.field input {
+  border: none;
+  outline: none;
+  background: transparent;
+  flex: 1;
+  font-size: 14px;
+  color: #21312a;
+}
+
+.icon { color: #2f8a3a; font-size: 16px; display: inline-grid; place-items: center; width: 28px; }
+
+.row { display: flex; justify-content: flex-end; margin-top: -4px; }
+
+.forgot { color: #2f8a3a; font-size: 13px; text-decoration: none; font-weight: 600; }
+
+.error {
+  color: #9b2c2c;
+  background: #fff5f5;
+  padding: 8px 10px;
+  border-radius: 6px;
+  font-size: 13px;
+  margin-top: 4px;
+}
+
+.submit {
+  margin-top: 6px;
+  background: #2f8a3a;
+  color: #fff;
+  border: none;
+  padding: 12px;
+  border-radius: 8px;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 8px 20px rgba(47,138,58,0.12);
+}
+
+.submit:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+/* Responsive */
+@media (max-width: 520px) {
+  .card { padding: 20px; }
+  .roleGrid { grid-template-columns: 1fr 1fr; gap: 8px; }
+}
