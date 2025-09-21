@@ -295,85 +295,27 @@
   margin: 0;
 }
 
-/* Proof Upload Section */
-.proofUploadSection {
+/* Completion Request Section */
+.completionRequestSection {
   padding: 2rem;
-  background: linear-gradient(135deg, #f3e5f5 0%, #e1bee7 100%);
+  background: linear-gradient(135deg, #e8f5e8 0%, #f0f8f0 100%);
   border-radius: 12px;
-  border: 2px solid #9c27b0;
+  border: 2px solid #4caf50;
 }
 
-.proofTitle {
+.completionTitle {
   font-size: 1.3rem;
   font-weight: 700;
-  color: #4a148c;
+  color: #2e7d32;
   margin: 0 0 0.5rem 0;
   text-align: center;
 }
 
-.proofDescription {
+.completionDescription {
   font-size: 1rem;
-  color: #6a1b9a;
+  color: #388e3c;
   margin: 0 0 1.5rem 0;
   text-align: center;
-}
-
-.uploadArea {
-  margin-bottom: 1.5rem;
-}
-
-.fileInput {
-  display: none;
-}
-
-.uploadLabel {
-  display: block;
-  width: 100%;
-  padding: 1rem;
-  background: #ffffff;
-  border: 2px dashed #9c27b0;
-  border-radius: 8px;
-  text-align: center;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  font-weight: 600;
-  color: #9c27b0;
-}
-
-.uploadLabel:hover {
-  background: #f8f5ff;
-  border-color: #7b1fa2;
-}
-
-.uploadLabel:disabled {
-  opacity: 0.6;
-  cursor: not-allowed;
-}
-
-.proofPreview {
-  margin-bottom: 1.5rem;
-}
-
-.proofPreview h5 {
-  font-size: 1.1rem;
-  font-weight: 600;
-  color: #4a148c;
-  margin: 0 0 1rem 0;
-}
-
-.imageGrid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
-  gap: 1rem;
-}
-
-.proofImage {
-  width: 100%;
-  height: 120px;
-  object-fit: cover;
-  border-radius: 8px;
-  border: 2px solid #9c27b0;
-  box-shadow: 0 2px 8px rgba(156, 39, 176, 0.2);
 }
 
 .notesSection {
@@ -384,14 +326,14 @@
   display: block;
   font-size: 1rem;
   font-weight: 600;
-  color: #4a148c;
+  color: #2e7d32;
   margin-bottom: 0.5rem;
 }
 
 .notesTextarea {
   width: 100%;
   padding: 0.75rem;
-  border: 2px solid #e1bee7;
+  border: 2px solid #c8e6c9;
   border-radius: 8px;
   font-size: 1rem;
   font-family: inherit;
@@ -401,13 +343,13 @@
 
 .notesTextarea:focus {
   outline: none;
-  border-color: #9c27b0;
-  box-shadow: 0 0 0 3px rgba(156, 39, 176, 0.1);
+  border-color: #4caf50;
+  box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.1);
 }
 
 .requestCompletionButton {
   width: 100%;
-  background: linear-gradient(135deg, #9c27b0 0%, #7b1fa2 100%);
+  background: linear-gradient(135deg, #4caf50 0%, #45a049 100%);
   color: #ffffff;
   border: none;
   padding: 1rem 2rem;
@@ -418,12 +360,12 @@
   transition: all 0.3s ease;
   text-transform: uppercase;
   letter-spacing: 0.5px;
-  box-shadow: 0 4px 16px rgba(156, 39, 176, 0.3);
+  box-shadow: 0 4px 16px rgba(76, 175, 80, 0.3);
 }
 
 .requestCompletionButton:hover:not(:disabled) {
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(156, 39, 176, 0.4);
+  box-shadow: 0 6px 20px rgba(76, 175, 80, 0.4);
 }
 
 .requestCompletionButton:disabled {
@@ -452,6 +394,79 @@
   font-size: 1rem;
   color: #0d47a1;
   margin: 0;
+}
+
+/* Rejected Message */
+.rejectedMessage {
+  text-align: center;
+  padding: 2rem;
+  background: linear-gradient(135deg, #ffebee 0%, #ffcdd2 100%);
+  border-radius: 12px;
+  border: 2px solid #f44336;
+}
+
+.rejectedMessage p {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #c62828;
+  margin: 0 0 1rem 0;
+}
+
+.rejectionFeedback {
+  background: #ffffff;
+  padding: 1.5rem;
+  border-radius: 8px;
+  margin: 1rem 0;
+  text-align: left;
+  border: 1px solid #e0e0e0;
+}
+
+.rejectionFeedback h5 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #d32f2f;
+  margin: 0 0 0.5rem 0;
+}
+
+.rejectionFeedback p {
+  font-size: 0.95rem;
+  color: #424242;
+  margin: 0 0 0.5rem 0;
+  font-style: italic;
+}
+
+.rejectionDate {
+  font-size: 0.85rem !important;
+  color: #757575 !important;
+  font-style: normal !important;
+  margin: 0 !important;
+}
+
+.resubmitButton {
+  background: linear-gradient(135deg, #ff9800 0%, #f57c00 100%);
+  color: #ffffff;
+  border: none;
+  padding: 1rem 2rem;
+  border-radius: 12px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  box-shadow: 0 4px 16px rgba(255, 152, 0, 0.3);
+  margin-top: 1rem;
+}
+
+.resubmitButton:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(255, 152, 0, 0.4);
+}
+
+.resubmitButton:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  transform: none;
 }
 
 /* Loading State */

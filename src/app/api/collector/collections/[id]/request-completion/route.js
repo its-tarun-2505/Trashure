@@ -24,8 +24,8 @@ export async function POST(request, { params }) {
       return NextResponse.json({ ok: false, error: 'Access denied' }, { status: 403 })
     }
 
-    const { id } = params
-    const { completionNotes, proofImages } = await request.json()
+    const { id } = await params
+    const { completionNotes } = await request.json()
 
     // Find the collection
     const collection = await PickupRequest.findById(id)
@@ -43,16 +43,10 @@ export async function POST(request, { params }) {
       return NextResponse.json({ ok: false, error: 'Can only request completion for collected items' }, { status: 400 })
     }
 
-    // Check if proof images are provided
-    if (!proofImages || proofImages.length === 0) {
-      return NextResponse.json({ ok: false, error: 'Proof images are required' }, { status: 400 })
-    }
-
     // Update collection status to pending completion
     collection.status = 'pending-completion'
     collection.completionRequestedAt = new Date()
     collection.completionNotes = completionNotes || ''
-    collection.proofImages = proofImages
     
     await collection.save()
 

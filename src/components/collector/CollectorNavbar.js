@@ -1,15 +1,18 @@
 'use client'
 
-import React, { useState } from 'react'
+import React, { useState, useRef, useEffect } from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
+import { FaBars, FaTimes } from 'react-icons/fa'
 import styles from './CollectorNavbar.module.css'
 
 const CollectorNavbar = () => {
   const [isNotificationOpen, setIsNotificationOpen] = useState(false)
   const [isProfileOpen, setIsProfileOpen] = useState(false)
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const [userData, setUserData] = useState(null)
   const router = useRouter()
+  const mobileMenuRef = useRef(null)
 
   // Fetch user data on component mount
   React.useEffect(() => {
@@ -27,6 +30,19 @@ const CollectorNavbar = () => {
       }
     }
     fetchUserData()
+  }, [])
+
+  // Close mobile menu when clicking outside
+  useEffect(() => {
+    function handleClickOutside(event) {
+      if (mobileMenuRef.current && !mobileMenuRef.current.contains(event.target)) {
+        setIsMobileMenuOpen(false)
+      }
+    }
+    document.addEventListener('mousedown', handleClickOutside)
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside)
+    }
   }, [])
 
   const handleLogout = async () => {
@@ -65,17 +81,17 @@ const CollectorNavbar = () => {
         </div>
 
         {/* Navigation Links */}
-        <div className={styles.navLinks}>
-          <Link href="/collector/dashboard" className={styles.navLink}>
+        <div className={`${styles.navLinks} ${isMobileMenuOpen ? styles.navLinksOpen : ''}`}>
+          <Link href="/collector/dashboard" className={styles.navLink} onClick={() => setIsMobileMenuOpen(false)}>
             Dashboard
           </Link>
-          <Link href="/collector/new-request" className={styles.navLink}>
+          <Link href="/collector/new-request" className={styles.navLink} onClick={() => setIsMobileMenuOpen(false)}>
             Requests
           </Link>
-          <Link href="/collector/reports" className={styles.navLink}>
-            Report
-          </Link>
-          <Link href="/collector/collections" className={styles.navLink}>
+          {/* <Link href="/collector/reports" className={styles.navLink} onClick={() => setIsMobileMenuOpen(false)}> */}
+            {/* Report */}
+          {/* </Link> */}
+          <Link href="/collector/collections" className={styles.navLink} onClick={() => setIsMobileMenuOpen(false)}>
             Collections
           </Link>
         </div>
@@ -181,7 +197,7 @@ const CollectorNavbar = () => {
                   </div>
                 </div>
                 <div className={styles.profileMenu}>
-                  <Link href="/collector/profile" className={styles.profileMenuItem}>
+                  {/* <Link href="/collector/profile" className={styles.profileMenuItem}>
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
                       <path
                         d="M20 21V19C20 17.9391 19.5786 16.9217 18.8284 16.1716C18.0783 15.4214 17.0609 15 16 15H8C6.93913 15 5.92172 15.4214 5.17157 16.1716C4.42143 16.9217 4 17.9391 4 19V21"
@@ -206,7 +222,7 @@ const CollectorNavbar = () => {
                       />
                     </svg>
                     Settings
-                  </Link>
+                  </Link> */}
                   <button
                     className={styles.profileMenuItem}
                     onClick={handleLogout}
@@ -244,6 +260,15 @@ const CollectorNavbar = () => {
             )}
           </div>
         </div>
+
+        {/* Mobile Menu Button */}
+        <button
+          className={styles.mobileMenuButton}
+          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          aria-label={isMobileMenuOpen ? 'Close menu' : 'Open menu'}
+        >
+          {isMobileMenuOpen ? <FaTimes /> : <FaBars />}
+        </button>
       </div>
     </nav>
   )

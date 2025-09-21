@@ -1,5 +1,5 @@
-import { redirect } from "next/navigation";
+import { redirect } from 'next/navigation'
 
-const page = () => redirect("/collector/dashboard");
-
-export default page;
+export default function CollectorPage() {
+  redirect('/collector/dashboard')
+}

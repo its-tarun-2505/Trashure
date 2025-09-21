@@ -128,20 +128,20 @@ const DashboardPage = () => {
       description: 'View analytics and reports'
     },
     {
-      title: 'Collection Routes',
+      title: 'View Collections',
       icon: '🗺️',
       color: 'purple',
-      href: '/collector/routes',
+      href: '/collector/collections',
       description: 'Plan and view collection routes'
     },
-    {
-      title: 'My History',
-      icon: '🔄',
-      color: 'orange',
-      href: '/collector/history',
-      description: 'View collection history'
-    }
   ]
+    // {
+    //   title: 'My History',
+    //   icon: '🔄',
+    //   color: 'orange',
+    //   href: '/collector/collections',
+    //   description: 'View collection history'
+    // }
 
   // Show loading state
   if (isLoading && !dashboardData) {
@@ -182,7 +182,7 @@ const DashboardPage = () => {
         <div className={styles.titleSection}>
           <h1 className={styles.title}>Collector Dashboard</h1>
           <p className={styles.subtitle}>
-            Welcome back{dashboardData?.collector?.name ? `, ${dashboardData.collector.name}` : ''}, let's manage your collections.
+            Welcome back{dashboardData?.collector?.name ? `, ${dashboardData.collector.name}` : ''}, let&apos;s manage your collections.
           </p>
           <div className={styles.timeDisplay}>
             <span className={styles.time}>
@@ -292,39 +292,50 @@ const DashboardPage = () => {
         </div>
       </div>
 
-      {/* Recent Activity */}
-      <div className={styles.recentActivitySection}>
-        <h2 className={styles.sectionTitle}>Recent Activity</h2>
-        <div className={styles.activityList}>
-          {dashboardData?.recentActivity?.length > 0 ? (
-            dashboardData.recentActivity.map((activity, index) => (
+      {/* Recent Collections */}
+      <div className={styles.recentCollectionsSection}>
+        <h2 className={styles.sectionTitle}>Recent Collections</h2>
+        <div className={styles.collectionsList}>
+          {dashboardData?.recentCollections?.length > 0 ? (
+            dashboardData.recentCollections.map((collection, index) => (
               <div
-                key={activity.id}
-                className={styles.activityItem}
+                key={collection._id}
+                className={styles.collectionItem}
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
-                <div className={styles.activityIcon}>
-                  {activity.type === 'pickup' ? '🚛' : '📋'}
+                <div className={styles.collectionIcon}>
+                  {collection.category === 'Recyclables' ? '♻️' : 
+                   collection.category === 'Organic Waste' ? '🍃' :
+                   collection.category === 'Electronic Waste' ? '🔌' :
+                   collection.category === 'Hazardous Waste' ? '⚠️' : '🗑️'}
                 </div>
-                <div className={styles.activityContent}>
-                  <h4 className={styles.activityTitle}>
-                    {activity.type === 'pickup' ? 'Pickup Request' : 'New Request'}
+                <div className={styles.collectionContent}>
+                  <h4 className={styles.collectionTitle}>
+                    {collection.category} Collection
                   </h4>
-                  <p className={styles.activityLocation}>{activity.location}</p>
-                  <span className={styles.activityTime}>{activity.time}</span>
-                  {activity.citizenName && (
-                    <span className={styles.citizenName}>by {activity.citizenName}</span>
+                  <p className={styles.collectionLocation}>{collection.address}</p>
+                  <span className={styles.collectionTime}>
+                    {new Date(collection.scheduledAt).toLocaleDateString()} at {new Date(collection.scheduledAt).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
+                  </span>
+                  {collection.citizen?.name && (
+                    <span className={styles.citizenName}>by {collection.citizen.name}</span>
                   )}
                 </div>
-                <div className={`${styles.activityStatus} ${styles[activity.status]}`}>
-                  {activity.status}
+                <div className={`${styles.collectionStatus} ${styles[collection.status]}`}>
+                  {collection.status.replace('-', ' ')}
                 </div>
+                <Link href={`/collector/collections/${collection._id}`} className={styles.viewCollectionBtn}>
+                  View →
+                </Link>
               </div>
             ))
           ) : (
-            <div className={styles.noActivity}>
-              <div className={styles.noActivityIcon}>📭</div>
-              <p>No recent activity</p>
+            <div className={styles.noCollections}>
+              <div className={styles.noCollectionsIcon}>📭</div>
+              <p>No recent collections</p>
+              <Link href="/collector/new-request" className={styles.createCollectionBtn}>
+                Create New Collection
+              </Link>
             </div>
           )}
         </div>

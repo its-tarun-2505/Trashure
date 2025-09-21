@@ -16,34 +16,16 @@ import {
 } from 'react-icons/fa'
 import styles from './DashboardPage.module.css'
 
-// optional: try NextAuth session (wrapped in try/catch to avoid hard dependency)
-let getServerSession, authOptions
-try {
-  // eslint-disable-next-line import/no-extraneous-dependencies
-  getServerSession = require('next-auth/next').getServerSession
-  authOptions = require('@/lib/auth').authOptions
-} catch (e) {
-  getServerSession = null
-  authOptions = null
-}
+// Authentication handled via cookies
 
 export default async function CitizenDashboardPage() {
   await dbConnect()
 
-  // 1) try NextAuth session (server)
+  // Initialize display name
   let displayName = 'Citizen'
-  try {
-    if (getServerSession && authOptions) {
-      const session = await getServerSession(authOptions)
-      if (session?.user?.name) displayName = session.user.name
-      else if (session?.user?.email) displayName = session.user.email.split('@')[0]
-    }
-  } catch (e) {
-    /* ignore session errors */
-  }
 
   // 2) read cookies - support auth token and legacy cookies
-  const cookieStore = cookies()
+  const cookieStore = await cookies()
   try {
     // auth token cookie
     const auth = cookieStore.get('trashure_auth')?.value
@@ -111,7 +93,7 @@ export default async function CitizenDashboardPage() {
     <div className={styles.wrap}>
       <header className={styles.header}>
         <h1 className={styles.title}>Welcome, {displayName}</h1>
-        <p className={styles.subtitle}>Here's an overview of your waste management activity.</p>
+        <p className={styles.subtitle}>Here&apos;s an overview of your waste management activity.</p>
       </header>
 
       <section className={styles.hero}>

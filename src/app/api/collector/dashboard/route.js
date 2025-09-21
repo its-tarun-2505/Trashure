@@ -30,21 +30,21 @@ export async function GET(req) {
 
     // Fetch pickup requests data
     const allRequests = await PickupRequest.find({
-      collectorId: collectorId
+      collector: collectorId
     }).lean()
 
     const todayRequests = await PickupRequest.find({
-      collectorId: collectorId,
+      collector: collectorId,
       createdAt: { $gte: startOfDay }
     }).lean()
 
     const weekRequests = await PickupRequest.find({
-      collectorId: collectorId,
+      collector: collectorId,
       createdAt: { $gte: startOfWeek }
     }).lean()
 
     const monthRequests = await PickupRequest.find({
-      collectorId: collectorId,
+      collector: collectorId,
       createdAt: { $gte: startOfMonth }
     }).lean()
 
@@ -56,7 +56,7 @@ export async function GET(req) {
 
     // Calculate trends
     const yesterdayRequests = await PickupRequest.find({
-      collectorId: collectorId,
+      collector: collectorId,
       createdAt: {
         $gte: new Date(startOfDay.getTime() - 24 * 60 * 60 * 1000),
         $lt: startOfDay
@@ -64,7 +64,7 @@ export async function GET(req) {
     }).lean()
 
     const lastWeekRequests = await PickupRequest.find({
-      collectorId: collectorId,
+      collector: collectorId,
       createdAt: {
         $gte: new Date(startOfWeek.getTime() - 7 * 24 * 60 * 60 * 1000),
         $lt: startOfWeek
@@ -72,7 +72,7 @@ export async function GET(req) {
     }).lean()
 
     const lastMonthRequests = await PickupRequest.find({
-      collectorId: collectorId,
+      collector: collectorId,
       createdAt: {
         $gte: new Date(startOfMonth.getTime() - 30 * 24 * 60 * 60 * 1000),
         $lt: startOfMonth
@@ -92,13 +92,22 @@ export async function GET(req) {
     const totalChange = totalTrend > 0 ? 
       Math.round(((totalPickups - totalTrend) / totalTrend) * 100) : 0
 
-    // Get recent activity (last 10 requests)
-    const recentActivity = await PickupRequest.find({
-      collectorId: collectorId
+    // Get recent collections (last 10 requests)
+    const recentCollections = await PickupRequest.find({
+      collector: collectorId
     })
     .sort({ createdAt: -1 })
     .limit(10)
-    .populate('citizenId', 'name')
+    .populate('citizen', 'name email')
+    .lean()
+
+    // Get recent activity (last 10 requests) - keeping for backward compatibility
+    const recentActivity = await PickupRequest.find({
+      collector: collectorId
+    })
+    .sort({ createdAt: -1 })
+    .limit(10)
+    .populate('citizen', 'name')
     .lean()
 
     // Format recent activity
@@ -108,7 +117,7 @@ export async function GET(req) {
       location: activity.address || 'Location not specified',
       time: getTimeAgo(activity.createdAt),
       status: activity.status,
-      citizenName: activity.citizenId?.name || 'Unknown Citizen'
+      citizenName: activity.citizen?.name || 'Unknown Citizen'
     }))
 
     // Get weekly performance data (last 7 days)
@@ -120,7 +129,7 @@ export async function GET(req) {
       nextDate.setDate(date.getDate() + 1)
 
       const dayRequests = await PickupRequest.find({
-        collectorId: collectorId,
+        collector: collectorId,
         createdAt: {
           $gte: date,
           $lt: nextDate
@@ -152,6 +161,7 @@ export async function GET(req) {
         completedChange
       },
       recentActivity: formattedActivity,
+      recentCollections: recentCollections,
       weeklyPerformance,
       collector: {
         name: collector.name,

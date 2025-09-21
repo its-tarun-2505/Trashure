@@ -1,4 +1,5 @@
 import React from "react";
+import Link from "next/link";
 import styles from "../styles/HomePage.module.css";
 
 export default function HomePage() {
@@ -12,7 +13,7 @@ export default function HomePage() {
             Join our community in revolutionizing waste management. Seamlessly
             request pickups and track your positive environmental impact.
           </p>
-          <button className={styles.ecCta}>Raise Your First Pickup Request</button>
+          <Link href="/register" className={styles.ecCta}>Raise Your First Pickup Request</Link>
         </div>
 
         <div className={styles.heroRight}>
@@ -65,7 +66,7 @@ export default function HomePage() {
               <img className={styles.image} src="/assets/homepage/Transparency.png" alt="imageLoading..."/>
             </div>
             <h4>Transparency</h4>
-            <p>Follow your waste's journey from your doorstep to the recycling facility.</p>
+            <p>Follow your waste&apos;s journey from your doorstep to the recycling facility.</p>
           </div>
 
           <div className={styles.featureCard}>

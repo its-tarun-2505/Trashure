@@ -149,7 +149,7 @@ export default function RequestsPage() {
             </div>
 
             <blockquote className={styles.quote}>
-              "Small acts, when multiplied by millions, can transform our world." — Community Clean-up
+              &ldquo;Small acts, when multiplied by millions, can transform our world.&rdquo; — Community Clean-up
             </blockquote>
           </div>
         </div>

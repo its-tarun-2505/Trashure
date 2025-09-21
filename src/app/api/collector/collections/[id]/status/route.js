@@ -24,11 +24,11 @@ export async function PATCH(request, { params }) {
       return NextResponse.json({ ok: false, error: 'Access denied' }, { status: 403 })
     }
 
-    const { id } = params
+    const { id } = await params
     const { status } = await request.json()
 
     // Validate status
-    const validStatuses = ['accepted', 'on-the-way', 'collected', 'completed', 'cancelled']
+    const validStatuses = ['accepted', 'on-the-way', 'collected', 'pending-completion', 'completed', 'cancelled']
     if (!validStatuses.includes(status)) {
       return NextResponse.json({ ok: false, error: 'Invalid status' }, { status: 400 })
     }

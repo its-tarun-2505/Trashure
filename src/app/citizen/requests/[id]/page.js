@@ -48,7 +48,7 @@ function statusBadge(status) {
 }
 
 export default async function RequestDetailPage({ params }) {
-  const { id } = params || {}
+  const { id } = await params || {}
   await dbConnect()
   const doc = await Request.findById(id).lean()
 

@@ -244,6 +244,26 @@
   font-weight: 500;
 }
 
+/* View Link */
+.viewLink {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.viewText {
+  color: #3498db;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: color 0.2s ease;
+  cursor: pointer;
+}
+
+.tableRow:hover .viewText {
+  color: #2980b9;
+}
+
 /* No Data State */
 .noDataCell {
   text-align: center;

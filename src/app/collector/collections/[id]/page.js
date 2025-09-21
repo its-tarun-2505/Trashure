@@ -9,9 +9,7 @@ const CollectionDetailPage = () => {
   const [isLoading, setIsLoading] = useState(true)
   const [error, setError] = useState(null)
   const [isUpdating, setIsUpdating] = useState(false)
-  const [proofImages, setProofImages] = useState([])
   const [completionNotes, setCompletionNotes] = useState('')
-  const [isUploading, setIsUploading] = useState(false)
   const router = useRouter()
   const params = useParams()
 
@@ -114,42 +112,9 @@ const CollectionDetailPage = () => {
     return statusFlow[currentStatus]
   }
 
-  // Handle proof image upload
-  const handleProofImageUpload = async (files) => {
-    setIsUploading(true)
-    try {
-      const formData = new FormData()
-      Array.from(files).forEach(file => {
-        formData.append('proofImages', file)
-      })
-
-      const response = await fetch(`/api/collector/collections/${params.id}/proof`, {
-        method: 'POST',
-        body: formData
-      })
-
-      if (response.ok) {
-        const data = await response.json()
-        setProofImages(data.proofImages || [])
-        alert('Proof images uploaded successfully!')
-      } else {
-        alert('Failed to upload proof images')
-      }
-    } catch (error) {
-      console.error('Error uploading proof images:', error)
-      alert('Failed to upload proof images')
-    } finally {
-      setIsUploading(false)
-    }
-  }
 
   // Handle completion request
   const handleRequestCompletion = async () => {
-    if (proofImages.length === 0) {
-      alert('Please upload at least one proof image before requesting completion')
-      return
-    }
-
     try {
       setIsUpdating(true)
       
@@ -159,8 +124,7 @@ const CollectionDetailPage = () => {
           'Content-Type': 'application/json'
         },
         body: JSON.stringify({ 
-          completionNotes,
-          proofImages 
+          completionNotes
         })
       })
 
@@ -286,36 +250,10 @@ const CollectionDetailPage = () => {
             {isUpdating ? 'Updating...' : `Confirm Status: ${statusProgression.find(s => s.key === nextStatus)?.label}`}
           </button>
         ) : collection.status === 'collected' ? (
-          <div className={styles.proofUploadSection}>
-            <h4 className={styles.proofTitle}>Upload Proof of Work</h4>
-            <p className={styles.proofDescription}>Upload images as proof that the collection has been completed.</p>
+          <div className={styles.completionRequestSection}>
+            <h4 className={styles.completionTitle}>Request Completion</h4>
+            <p className={styles.completionDescription}>Mark this collection as completed and request citizen approval.</p>
             
-            <div className={styles.uploadArea}>
-              <input
-                type="file"
-                id="proofImages"
-                multiple
-                accept="image/*"
-                onChange={(e) => handleProofImageUpload(e.target.files)}
-                className={styles.fileInput}
-                disabled={isUploading}
-              />
-              <label htmlFor="proofImages" className={styles.uploadLabel}>
-                {isUploading ? 'Uploading...' : 'Choose Proof Images'}
-              </label>
-            </div>
-
-            {proofImages.length > 0 && (
-              <div className={styles.proofPreview}>
-                <h5>Proof Images ({proofImages.length})</h5>
-                <div className={styles.imageGrid}>
-                  {proofImages.map((image, index) => (
-                    <img key={index} src={image} alt={`Proof ${index + 1}`} className={styles.proofImage} />
-                  ))}
-                </div>
-              </div>
-            )}
-
             <div className={styles.notesSection}>
               <label htmlFor="completionNotes" className={styles.notesLabel}>
                 Completion Notes (Optional)
@@ -333,7 +271,7 @@ const CollectionDetailPage = () => {
             <button
               className={styles.requestCompletionButton}
               onClick={handleRequestCompletion}
-              disabled={isUpdating || proofImages.length === 0}
+              disabled={isUpdating}
             >
               {isUpdating ? 'Sending Request...' : 'Request Completion from Citizen'}
             </button>
@@ -341,7 +279,27 @@ const CollectionDetailPage = () => {
         ) : collection.status === 'pending-completion' ? (
           <div className={styles.pendingCompletionMessage}>
             <p>⏳ Completion request sent to citizen. Waiting for approval...</p>
-            <p>Proof images: {collection.proofImages?.length || 0}</p>
+          </div>
+        ) : collection.status === 'rejected' ? (
+          <div className={styles.rejectedMessage}>
+            <p>❌ Completion request was rejected by citizen.</p>
+            {collection.rejectionFeedback && (
+              <div className={styles.rejectionFeedback}>
+                <h5>Citizen Feedback:</h5>
+                <p>"{collection.rejectionFeedback}"</p>
+                <p className={styles.rejectionDate}>
+                  Rejected on: {new Date(collection.rejectedAt).toLocaleString()}
+                </p>
+              </div>
+            )}
+            <p>Please review the feedback and resubmit your completion request.</p>
+            <button
+              className={styles.resubmitButton}
+              onClick={() => handleStatusUpdate('pending-completion')}
+              disabled={isUpdating}
+            >
+              {isUpdating ? 'Resubmitting...' : 'Resubmit Completion Request'}
+            </button>
           </div>
         ) : collection.status === 'completed' ? (
           <div className={styles.completedMessage}>

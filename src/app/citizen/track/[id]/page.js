@@ -12,7 +12,6 @@ import {
   FaMapMarkerAlt,
   FaCalendarAlt,
   FaTimes,
-  FaEye,
   FaThumbsUp,
   FaThumbsDown
 } from 'react-icons/fa'
@@ -38,7 +37,9 @@ export default function TrackRequestPage() {
   const [isLoading, setIsLoading] = useState(true)
   const [error, setError] = useState(null)
   const [isApproving, setIsApproving] = useState(false)
-  const [showProofModal, setShowProofModal] = useState(false)
+  const [isRejecting, setIsRejecting] = useState(false)
+  const [showRejectModal, setShowRejectModal] = useState(false)
+  const [rejectFeedback, setRejectFeedback] = useState('')
   const params = useParams()
 
   // Fetch request data
@@ -93,6 +94,44 @@ export default function TrackRequestPage() {
       alert('Failed to approve completion')
     } finally {
       setIsApproving(false)
+    }
+  }
+
+  // Handle completion rejection
+  const handleRejectCompletion = async () => {
+    if (!rejectFeedback.trim()) {
+      alert('Please provide feedback for rejection')
+      return
+    }
+
+    try {
+      setIsRejecting(true)
+      
+      const response = await fetch(`/api/citizen/requests/${params.id}/reject-completion`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          feedback: rejectFeedback
+        })
+      })
+
+      if (response.ok) {
+        const data = await response.json()
+        setDoc(data.request)
+        setShowRejectModal(false)
+        setRejectFeedback('')
+        alert('Completion request rejected. Collector will be notified to resubmit.')
+      } else {
+        const errorData = await response.json()
+        alert(`Failed to reject completion: ${errorData.error || 'Unknown error'}`)
+      }
+    } catch (error) {
+      console.error('Error rejecting completion:', error)
+      alert('Failed to reject completion')
+    } finally {
+      setIsRejecting(false)
     }
   }
 
@@ -336,24 +375,21 @@ export default function TrackRequestPage() {
                   </div>
                 )}
 
-                {doc.proofImages && doc.proofImages.length > 0 && (
-                  <div className={styles.proofSection}>
-                    <button 
-                      className={styles.viewProofBtn}
-                      onClick={() => setShowProofModal(true)}
-                    >
-                      <FaEye /> View Proof Images ({doc.proofImages.length})
-                    </button>
-                  </div>
-                )}
 
                 <div className={styles.approvalActions}>
                   <button 
                     className={styles.approveBtn}
                     onClick={handleApproveCompletion}
-                    disabled={isApproving}
+                    disabled={isApproving || isRejecting}
                   >
                     <FaThumbsUp /> {isApproving ? 'Approving...' : 'Approve Completion'}
+                  </button>
+                  <button 
+                    className={styles.rejectBtn}
+                    onClick={() => setShowRejectModal(true)}
+                    disabled={isApproving || isRejecting}
+                  >
+                    <FaThumbsDown /> Reject Completion
                   </button>
                 </div>
               </div>
@@ -366,28 +402,55 @@ export default function TrackRequestPage() {
         </aside>
       </div>
 
-      {/* Proof Images Modal */}
-      {showProofModal && (
-        <div className={styles.modalOverlay} onClick={() => setShowProofModal(false)}>
+
+      {/* Reject Completion Modal */}
+      {showRejectModal && (
+        <div className={styles.modalOverlay} onClick={() => setShowRejectModal(false)}>
           <div className={styles.modalContent} onClick={(e) => e.stopPropagation()}>
             <div className={styles.modalHeader}>
-              <h3>Proof of Work Images</h3>
+              <h3>Reject Completion Request</h3>
               <button 
                 className={styles.closeModal}
-                onClick={() => setShowProofModal(false)}
+                onClick={() => setShowRejectModal(false)}
               >
                 ×
               </button>
             </div>
             <div className={styles.modalBody}>
-              {doc.proofImages && doc.proofImages.map((image, index) => (
-                <img 
-                  key={index} 
-                  src={image} 
-                  alt={`Proof ${index + 1}`} 
-                  className={styles.modalImage}
+              <p className={styles.rejectDescription}>
+                Please provide feedback explaining why you're rejecting this completion request. 
+                The collector will be notified and can resubmit with improvements.
+              </p>
+              <div className={styles.feedbackSection}>
+                <label htmlFor="rejectFeedback" className={styles.feedbackLabel}>
+                  Feedback/Remarks (Required)
+                </label>
+                <textarea
+                  id="rejectFeedback"
+                  value={rejectFeedback}
+                  onChange={(e) => setRejectFeedback(e.target.value)}
+                  placeholder="Please explain what needs to be improved..."
+                  className={styles.feedbackTextarea}
+                  rows={4}
+                  required
                 />
-              ))}
+              </div>
+              <div className={styles.modalActions}>
+                <button 
+                  className={styles.cancelBtn}
+                  onClick={() => setShowRejectModal(false)}
+                  disabled={isRejecting}
+                >
+                  Cancel
+                </button>
+                <button 
+                  className={styles.confirmRejectBtn}
+                  onClick={handleRejectCompletion}
+                  disabled={isRejecting || !rejectFeedback.trim()}
+                >
+                  {isRejecting ? 'Rejecting...' : 'Reject Completion'}
+                </button>
+              </div>
             </div>
           </div>
         </div>

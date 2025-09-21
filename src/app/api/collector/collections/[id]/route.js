@@ -25,7 +25,7 @@ export async function GET(request, { params }) {
     }
 
     // Get the collection ID from params
-    const collectionId = params.id
+    const { id: collectionId } = await params
 
     // Fetch the specific collection with citizen information
     const collection = await PickupRequest.findOne({

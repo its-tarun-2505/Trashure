@@ -14,19 +14,17 @@ export async function POST(req) {
       return NextResponse.json({ message: 'Role, email and password are required' }, { status: 400 })
     }
 
-    // normalize
     const normalizedEmail = String(email).trim().toLowerCase()
     let requestedRole = String(role).trim()
 
-    // map any UI-only roles to real roles (if you used demo_collector)
-    if (requestedRole === 'demo_collector') requestedRole = 'collector'
+    // if (requestedRole === 'demo_collector') requestedRole = 'collector'
 
     const user = await User.findOne({ email: normalizedEmail }).lean()
     if (!user) {
       return NextResponse.json({ message: 'Invalid credentials' }, { status: 401 })
     }
 
-    // enforce role match
+    // role match
     if (user.role !== requestedRole) {
       return NextResponse.json({ message: 'Role does not match account' }, { status: 403 })
     }

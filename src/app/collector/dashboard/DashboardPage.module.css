@@ -804,3 +804,176 @@
 .dashboard::-webkit-scrollbar-thumb:hover {
   background: #a8a8a8;
 }
+
+/* Recent Collections Section */
+.recentCollectionsSection {
+  margin-bottom: 2rem;
+}
+
+.collectionsList {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.collectionItem {
+  display: flex;
+  align-items: center;
+  padding: 1.5rem;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e2e8f0;
+  transition: all 0.3s ease;
+  animation: slideInLeft 0.5s ease-out forwards;
+  opacity: 0;
+}
+
+.collectionItem:hover {
+  background: #f7fafc;
+  transform: translateX(4px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+}
+
+.collectionIcon {
+  font-size: 1.5rem;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #e8f5e8 0%, #f0f8f0 100%);
+  margin-right: 1rem;
+  flex-shrink: 0;
+}
+
+.collectionContent {
+  flex: 1;
+  min-width: 0;
+}
+
+.collectionTitle {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #2d3748;
+  margin-bottom: 0.25rem;
+}
+
+.collectionLocation {
+  font-size: 0.875rem;
+  color: #718096;
+  margin-bottom: 0.25rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.collectionTime {
+  font-size: 0.75rem;
+  color: #a0aec0;
+  margin-right: 0.5rem;
+}
+
+.collectionStatus {
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-right: 1rem;
+  flex-shrink: 0;
+}
+
+.collectionStatus.pending {
+  background: #fef5e7;
+  color: #d69e2e;
+}
+
+.collectionStatus.accepted {
+  background: #e6fffa;
+  color: #38b2ac;
+}
+
+.collectionStatus\.on-the-way {
+  background: #ebf8ff;
+  color: #3182ce;
+}
+
+.collectionStatus.collected {
+  background: #f0fff4;
+  color: #38a169;
+}
+
+.collectionStatus\.pending-completion {
+  background: #faf5ff;
+  color: #805ad5;
+}
+
+.collectionStatus.completed {
+  background: #f0fff4;
+  color: #38a169;
+}
+
+.collectionStatus.rejected {
+  background: #fed7d7;
+  color: #e53e3e;
+}
+
+.viewCollectionBtn {
+  padding: 0.5rem 1rem;
+  background: linear-gradient(135deg, #4caf50 0%, #45a049 100%);
+  color: #ffffff;
+  text-decoration: none;
+  border-radius: 8px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  flex-shrink: 0;
+}
+
+.viewCollectionBtn:hover {
+  background: linear-gradient(135deg, #45a049 0%, #3d8b40 100%);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(76, 175, 80, 0.3);
+}
+
+.noCollections {
+  text-align: center;
+  padding: 3rem 2rem;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e2e8f0;
+}
+
+.noCollectionsIcon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  opacity: 0.5;
+}
+
+.noCollections p {
+  font-size: 1.1rem;
+  color: #718096;
+  margin-bottom: 1.5rem;
+}
+
+.createCollectionBtn {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  background: linear-gradient(135deg, #4caf50 0%, #45a049 100%);
+  color: #ffffff;
+  text-decoration: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.createCollectionBtn:hover {
+  background: linear-gradient(135deg, #45a049 0%, #3d8b40 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(76, 175, 80, 0.3);
+}

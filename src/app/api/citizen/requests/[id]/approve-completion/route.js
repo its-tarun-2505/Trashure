@@ -24,7 +24,7 @@ export async function POST(request, { params }) {
       return NextResponse.json({ ok: false, error: 'Access denied' }, { status: 403 })
     }
 
-    const { id } = params
+    const { id } = await params
 
     // Find the request
     const request = await PickupRequest.findById(id)

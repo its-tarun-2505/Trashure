@@ -36,6 +36,15 @@
   font-weight: 700;
   cursor: pointer;
   box-shadow: 0 6px 18px rgba(47,138,58,0.18);
+  text-decoration: none;
+  display: inline-block;
+  transition: all 0.3s ease;
+}
+
+.ecCta:hover {
+  background: #2a7a34;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(47,138,58,0.25);
 }
 .heroCardImg {
   height: 260px;

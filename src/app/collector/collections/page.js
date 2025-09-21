@@ -201,12 +201,13 @@ const CollectionsPage = () => {
               <th className={styles.headerCell}>WASTE CATEGORY</th>
               <th className={styles.headerCell}>STATUS</th>
               <th className={styles.headerCell}>DATE/TIME</th>
+              <th className={styles.headerCell}>ACTION</th>
             </tr>
           </thead>
           <tbody>
             {collections.length === 0 ? (
               <tr>
-                <td colSpan="5" className={styles.noDataCell}>
+                <td colSpan="6" className={styles.noDataCell}>
                   <div className={styles.noDataContainer}>
                     <p>No collections found</p>
                   </div>
@@ -222,6 +223,7 @@ const CollectionsPage = () => {
                     className={styles.tableRow}
                     onClick={() => handleRowClick(collection._id)}
                     style={{ cursor: 'pointer' }}
+                    title="Click to view collection details"
                   >
                     <td className={styles.dataCell}>
                       <div className={styles.citizenName}>
@@ -258,6 +260,11 @@ const CollectionsPage = () => {
                     <td className={styles.dataCell}>
                       <div className={styles.dateTime}>
                         {formatDateTime(collection.scheduledAt)}
+                      </div>
+                    </td>
+                    <td className={styles.dataCell}>
+                      <div className={styles.viewLink}>
+                        <span className={styles.viewText}>View Details →</span>
                       </div>
                     </td>
                   </tr>

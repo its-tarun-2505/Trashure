@@ -66,7 +66,7 @@ export default function CitizenNavbar() {
               </div>
             )}
           </div>
-          <Link href="/recycling-centers" className={styles.link} onClick={() => setOpen(false)}>Recycling Centers</Link>
+          {/* <Link href="/recycling-centers" className={styles.link} onClick={() => setOpen(false)}>Recycling Centers</Link> */}
           {/* <Link href="/citizen/profile" className={styles.link} onClick={() => setOpen(false)}>Profile</Link> */}
         </nav>
 

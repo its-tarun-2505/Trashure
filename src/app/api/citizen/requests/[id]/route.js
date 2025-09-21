@@ -24,7 +24,7 @@ export async function GET(request, { params }) {
       return NextResponse.json({ ok: false, error: 'Access denied' }, { status: 403 })
     }
 
-    const { id } = params
+    const { id } = await params
 
     // Fetch the specific request with collector information
     const request = await PickupRequest.findOne({
