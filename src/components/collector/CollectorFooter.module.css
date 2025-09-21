@@ -1,0 +1,221 @@
+/* Footer Container */
+.footer {
+  background: #f8f9fa;
+  border-top: 1px solid #e2e8f0;
+  padding: 2rem 0;
+  margin-top: auto;
+}
+
+.container {
+  /* max-width: 1200px; */
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+/* Left Section - Logo and Copyright */
+.leftSection {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.logoIcon {
+  display: flex;
+  gap: 2px;
+  align-items: flex-end;
+}
+
+.bar {
+  width: 4px;
+  background: linear-gradient(135deg, #48bb78 0%, #38a169 100%);
+  border-radius: 2px;
+  transform: skewY(-15deg);
+}
+
+.bar:nth-child(1) {
+  height: 16px;
+  background: linear-gradient(135deg, #9ae6b4 0%, #68d391 100%);
+}
+
+.bar:nth-child(2) {
+  height: 20px;
+  background: linear-gradient(135deg, #68d391 0%, #48bb78 100%);
+}
+
+.bar:nth-child(3) {
+  height: 14px;
+  background: linear-gradient(135deg, #48bb78 0%, #38a169 100%);
+}
+
+.copyright {
+  color: #718096;
+  font-size: 0.875rem;
+  font-weight: 400;
+  white-space: nowrap;
+}
+
+/* Right Section - Navigation Links */
+.rightSection {
+  display: flex;
+  align-items: center;
+}
+
+.footerNav {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.navLink {
+  color: #718096;
+  text-decoration: none;
+  font-size: 0.875rem;
+  font-weight: 400;
+  transition: color 0.2s ease;
+  position: relative;
+}
+
+.navLink:hover {
+  color: #4a5568;
+}
+
+.navLink::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: #48bb78;
+  transition: width 0.3s ease;
+}
+
+.navLink:hover::after {
+  width: 100%;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+    text-align: center;
+    gap: 1.5rem;
+  }
+
+  .leftSection {
+    justify-content: center;
+  }
+
+  .footerNav {
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .footer {
+    padding: 1.5rem 0;
+  }
+
+  .container {
+    padding: 0 1rem;
+  }
+
+  .logo {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .copyright {
+    font-size: 0.8rem;
+  }
+
+  .footerNav {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .navLink {
+    font-size: 0.8rem;
+  }
+}
+
+/* Animation for logo bars */
+.bar {
+  animation: gentleWave 3s ease-in-out infinite;
+}
+
+.bar:nth-child(1) {
+  animation-delay: 0s;
+}
+
+.bar:nth-child(2) {
+  animation-delay: 0.1s;
+}
+
+.bar:nth-child(3) {
+  animation-delay: 0.2s;
+}
+
+@keyframes gentleWave {
+  0%, 100% {
+    transform: skewY(-15deg) scaleY(1);
+  }
+  50% {
+    transform: skewY(-15deg) scaleY(1.05);
+  }
+}
+
+/* Focus States for Accessibility */
+.navLink:focus {
+  outline: 2px solid #4299e1;
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+/* Hover Effects */
+.footer:hover .bar {
+  animation-play-state: paused;
+}
+
+/* Subtle shadow for depth */
+.footer {
+  box-shadow: 0 -1px 3px rgba(0, 0, 0, 0.05);
+}
+
+/* Ensure footer stays at bottom */
+.footer {
+  margin-top: auto;
+}
+
+/* Additional styling for better visual hierarchy */
+.copyright {
+  letter-spacing: 0.025em;
+}
+
+.navLink {
+  letter-spacing: 0.01em;
+  padding: 0.25rem 0;
+}
+
+/* Loading state for smooth rendering */
+.footer {
+  opacity: 0;
+  animation: fadeIn 0.5s ease forwards;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}

@@ -13,10 +13,11 @@ export default function LoginPage() {
   const [error, setError] = useState('')
 
   function validate() {
-    if (!email.trim()) return 'Email is required'
+    if (!email.trim()) return 'Please enter your email address'
     const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
-    if (!re.test(email)) return 'Enter a valid email'
-    if (!password) return 'Password is required'
+    if (!re.test(email)) return 'Please enter a valid email address (e.g., user@example.com)'
+    if (!password) return 'Please enter your password'
+    if (password.length < 6) return 'Password must be at least 6 characters long'
     return ''
   }
 
@@ -38,8 +39,9 @@ export default function LoginPage() {
       const data = await res.json()
       if (!res.ok) throw new Error(data?.message || 'Login failed')
       // redirect based on role (backend may return preferred path)
-      const redirectTo = data?.redirect || (role === 'collector' ? '/collector' : (role === 'citizen') ? '/citizen' : 'admin')
-      router.push(redirectTo)
+      const redirectTo = data?.redirect || (role === 'collector' ? '/collector/dashboard' : (role === 'citizen') ? '/citizen/dashboard' : '/admin/dashboard')
+      // Use window.location.href for full page reload to ensure cookie is set
+      window.location.href = redirectTo
     } catch (err) {
       setError(err.message)
     } finally {
@@ -56,8 +58,8 @@ export default function LoginPage() {
   return (
     <div className={styles.pageWrap}>
       <main className={styles.card}>
-        <h1 className={styles.title}>Welcome to EcoCollect</h1>
-        <p className={styles.subtitle}>Log in to manage waste collection</p>
+        <h1 className={styles.title}>Welcome to Trashure</h1>
+        <p className={styles.subtitle}>Sign in to your account to manage waste collection requests</p>
 
         <label className={styles.sectionLabel}>Select your role</label>
         <div className={styles.roleGrid} role="tablist" aria-label="Select role">
@@ -103,7 +105,7 @@ export default function LoginPage() {
           {error && <div className={styles.error}>{error}</div>}
 
           <button className={styles.submit} type="submit" disabled={loading}>
-            {loading ? 'Logging in…' : 'Login'}
+            {loading ? 'Signing in...' : 'Sign In'}
           </button>
         </form>
       </main>

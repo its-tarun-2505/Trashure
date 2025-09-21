@@ -5,7 +5,7 @@ import Footer from '@/components/Footer'
 
 export default function RootChrome({ children }) {
   const pathname = usePathname()
-  const hideRootChrome = pathname?.startsWith('/citizen' || '/collector' || '/admin')
+  const hideRootChrome = pathname?.startsWith('/citizen') || pathname?.startsWith('/collector') || pathname?.startsWith('/admin')
 
   return (
     <>

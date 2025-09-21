@@ -1,0 +1,585 @@
+/* Container */
+.container {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #e8f5e8 0%, #f0f8f0 100%);
+  padding: 2rem;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+/* Header */
+.header {
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #2c3e50;
+  margin: 0;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Details Card */
+.detailsCard {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 2rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.detailsContent {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2rem;
+}
+
+.detailsInfo {
+  flex: 1;
+}
+
+.citizenName {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #2c3e50;
+  margin: 0 0 0.5rem 0;
+}
+
+.address {
+  font-size: 1.1rem;
+  color: #5a6c7d;
+  margin: 0 0 1rem 0;
+  line-height: 1.5;
+}
+
+.categoryTag {
+  display: inline-block;
+  padding: 0.6rem 1.2rem;
+  border-radius: 25px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #ffffff;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* House Icon */
+.houseIcon {
+  flex-shrink: 0;
+}
+
+.houseIllustration {
+  position: relative;
+  width: 120px;
+  height: 120px;
+  background: linear-gradient(135deg, #ff8a65 0%, #ffab91 100%);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 24px rgba(255, 138, 101, 0.3);
+}
+
+.house {
+  width: 40px;
+  height: 30px;
+  background: #ffffff;
+  position: relative;
+  border-radius: 4px;
+}
+
+.house::before {
+  content: '';
+  position: absolute;
+  top: -8px;
+  left: -2px;
+  width: 44px;
+  height: 16px;
+  background: #ffffff;
+  clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+}
+
+.tree {
+  position: absolute;
+  right: 15px;
+  bottom: 20px;
+  width: 12px;
+  height: 20px;
+  background: #4caf50;
+  border-radius: 2px;
+}
+
+.tree::before {
+  content: '';
+  position: absolute;
+  top: -8px;
+  left: -4px;
+  width: 20px;
+  height: 12px;
+  background: #4caf50;
+  border-radius: 50%;
+}
+
+/* Status Card */
+.statusCard {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 2rem;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.statusTitle {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #2c3e50;
+  margin: 0 0 2rem 0;
+  text-align: center;
+}
+
+/* Stepper */
+.stepper {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 2rem;
+  position: relative;
+  gap: 1rem;
+}
+
+.stepper::before {
+  content: '';
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  right: 20px;
+  height: 2px;
+  background: #e0e0e0;
+  z-index: 1;
+}
+
+.step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  z-index: 2;
+  flex: 1;
+}
+
+.stepCircle {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+  transition: all 0.3s ease;
+}
+
+.stepCircle.completed {
+  background: #4caf50;
+  color: #ffffff;
+  box-shadow: 0 4px 12px rgba(76, 175, 80, 0.3);
+}
+
+.stepCircle.current {
+  background: #4caf50;
+  color: #ffffff;
+  box-shadow: 0 4px 12px rgba(76, 175, 80, 0.3);
+}
+
+.stepCircle.pending {
+  background: #e0e0e0;
+  color: #9e9e9e;
+}
+
+.stepContent {
+  text-align: center;
+  max-width: 120px;
+}
+
+.stepLabel {
+  font-size: 0.8rem;
+  margin-bottom: 0.25rem;
+  font-weight: 500;
+}
+
+.stepTitle {
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.completedText {
+  color: #4caf50;
+}
+
+.currentText {
+  color: #4caf50;
+}
+
+.pendingText {
+  color: #9e9e9e;
+}
+
+/* Confirm Button */
+.confirmButton {
+  width: 25%;
+  background: linear-gradient(135deg, #4caf50 0%, #45a049 100%);
+  color: #ffffff;
+  border: none;
+  padding: 1rem 2rem;
+  border-radius: 12px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  box-shadow: 0 4px 16px rgba(76, 175, 80, 0.3);
+}
+
+.confirmButton:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(76, 175, 80, 0.4);
+}
+
+.confirmButton:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Completed Message */
+.completedMessage {
+  text-align: center;
+  padding: 2rem;
+  background: linear-gradient(135deg, #e8f5e8 0%, #f0f8f0 100%);
+  border-radius: 12px;
+  border: 2px solid #4caf50;
+}
+
+.completedMessage p {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #4caf50;
+  margin: 0;
+}
+
+/* No Action Message */
+.noActionMessage {
+  text-align: center;
+  padding: 2rem;
+  background: linear-gradient(135deg, #fff3e0 0%, #ffe0b2 100%);
+  border-radius: 12px;
+  border: 2px solid #ff9800;
+}
+
+.noActionMessage p {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #e65100;
+  margin: 0 0 0.5rem 0;
+}
+
+.noActionMessage p:last-child {
+  font-size: 0.9rem;
+  color: #bf360c;
+  margin: 0;
+}
+
+/* Proof Upload Section */
+.proofUploadSection {
+  padding: 2rem;
+  background: linear-gradient(135deg, #f3e5f5 0%, #e1bee7 100%);
+  border-radius: 12px;
+  border: 2px solid #9c27b0;
+}
+
+.proofTitle {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #4a148c;
+  margin: 0 0 0.5rem 0;
+  text-align: center;
+}
+
+.proofDescription {
+  font-size: 1rem;
+  color: #6a1b9a;
+  margin: 0 0 1.5rem 0;
+  text-align: center;
+}
+
+.uploadArea {
+  margin-bottom: 1.5rem;
+}
+
+.fileInput {
+  display: none;
+}
+
+.uploadLabel {
+  display: block;
+  width: 100%;
+  padding: 1rem;
+  background: #ffffff;
+  border: 2px dashed #9c27b0;
+  border-radius: 8px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: 600;
+  color: #9c27b0;
+}
+
+.uploadLabel:hover {
+  background: #f8f5ff;
+  border-color: #7b1fa2;
+}
+
+.uploadLabel:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.proofPreview {
+  margin-bottom: 1.5rem;
+}
+
+.proofPreview h5 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #4a148c;
+  margin: 0 0 1rem 0;
+}
+
+.imageGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 1rem;
+}
+
+.proofImage {
+  width: 100%;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 8px;
+  border: 2px solid #9c27b0;
+  box-shadow: 0 2px 8px rgba(156, 39, 176, 0.2);
+}
+
+.notesSection {
+  margin-bottom: 1.5rem;
+}
+
+.notesLabel {
+  display: block;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #4a148c;
+  margin-bottom: 0.5rem;
+}
+
+.notesTextarea {
+  width: 100%;
+  padding: 0.75rem;
+  border: 2px solid #e1bee7;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-family: inherit;
+  resize: vertical;
+  transition: border-color 0.3s ease;
+}
+
+.notesTextarea:focus {
+  outline: none;
+  border-color: #9c27b0;
+  box-shadow: 0 0 0 3px rgba(156, 39, 176, 0.1);
+}
+
+.requestCompletionButton {
+  width: 100%;
+  background: linear-gradient(135deg, #9c27b0 0%, #7b1fa2 100%);
+  color: #ffffff;
+  border: none;
+  padding: 1rem 2rem;
+  border-radius: 12px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  box-shadow: 0 4px 16px rgba(156, 39, 176, 0.3);
+}
+
+.requestCompletionButton:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(156, 39, 176, 0.4);
+}
+
+.requestCompletionButton:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Pending Completion Message */
+.pendingCompletionMessage {
+  text-align: center;
+  padding: 2rem;
+  background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+  border-radius: 12px;
+  border: 2px solid #2196f3;
+}
+
+.pendingCompletionMessage p {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #1565c0;
+  margin: 0 0 0.5rem 0;
+}
+
+.pendingCompletionMessage p:last-child {
+  font-size: 1rem;
+  color: #0d47a1;
+  margin: 0;
+}
+
+/* Loading State */
+.loadingContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem 2rem;
+  text-align: center;
+}
+
+.loadingSpinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid #f3f3f3;
+  border-top: 4px solid #4caf50;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: 1rem;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Error State */
+.errorContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem 2rem;
+  text-align: center;
+}
+
+.errorMessage {
+  color: #e74c3c;
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+}
+
+.backButton {
+  background: #3498db;
+  color: #ffffff;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.backButton:hover {
+  background: #2980b9;
+  transform: translateY(-1px);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .container {
+    padding: 1rem;
+  }
+
+  .title {
+    font-size: 2rem;
+  }
+
+  .detailsContent {
+    flex-direction: column;
+    text-align: center;
+    gap: 1.5rem;
+  }
+
+  .houseIllustration {
+    width: 100px;
+    height: 100px;
+  }
+
+  .stepper {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .stepper::before {
+    display: none;
+  }
+
+  .step {
+    flex-direction: row;
+    justify-content: flex-start;
+    width: 100%;
+  }
+
+  .stepContent {
+    text-align: left;
+    margin-left: 1rem;
+    max-width: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .title {
+    font-size: 1.75rem;
+  }
+
+  .detailsCard,
+  .statusCard {
+    padding: 1.5rem;
+  }
+
+  .citizenName {
+    font-size: 1.5rem;
+  }
+
+  .address {
+    font-size: 1rem;
+  }
+
+  .statusTitle {
+    font-size: 1.25rem;
+  }
+
+  .confirmButton {
+    padding: 0.875rem 1.5rem;
+    font-size: 1rem;
+    width: 100%;
+  }
+}

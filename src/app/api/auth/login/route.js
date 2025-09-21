@@ -2,6 +2,7 @@ import { NextResponse } from 'next/server'
 import bcrypt from 'bcryptjs'
 import { dbConnect } from '@/lib/db.js'
 import User from '@/models/User.js'
+import { signToken, createAuthCookie } from '@/lib/auth.js'
 
 export async function POST(req) {
   try {
@@ -35,17 +36,20 @@ export async function POST(req) {
       return NextResponse.json({ message: 'Invalid credentials' }, { status: 401 })
     }
 
-    // decide redirect based on role
+    // set auth cookie
+    const token = signToken({ sub: String(user._id), role: user.role, email: user.email })
+    const res = NextResponse.json({ message: 'Authenticated' }, { status: 200 })
+    res.headers.append('Set-Cookie', createAuthCookie(token))
+
+    // decide redirect based on role (client can redirect after success)
     const redirectMap = {
-      citizen: '/citizen',
-      collector: '/collector',
+      citizen: '/citizen/dashboard',
+      collector: '/collector/dashboard',
       admin: '/admin'
     }
     const redirect = redirectMap[user.role] || '/'
-
-    // NOTE: This endpoint currently only authenticates and returns redirect.
-    // For production you should create a session / set an HttpOnly cookie or return a JWT.
-    return NextResponse.json({ message: 'Authenticated', redirect }, { status: 200 })
+    res.headers.set('x-redirect', redirect)
+    return res
   } catch (err) {
     console.error('login error', err)
     return NextResponse.json({ message: 'Server error' }, { status: 500 })

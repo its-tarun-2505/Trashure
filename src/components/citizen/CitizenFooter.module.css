@@ -5,7 +5,7 @@
   color: #23322b;
 }
 .container {
-  max-width: 1100px;
+  /* max-width: 1100px; */
   margin: 0 auto;
   padding: 28px 20px;
   display: grid;

@@ -14,7 +14,21 @@ const userSchema = new Schema(
     email: { type: String, required: true, trim: true, lowercase: true, unique: true },
     phone: { type: String, required: true, trim: true },
     address: { type: String, required: true, trim: true },
-    password: { type: String, required: true }
+    password: { type: String, required: true },
+    photoUrl: { type: String, default: '' },
+    // Location fields for collectors
+    latitude: { 
+      type: Number, 
+      required: function() { return this.role === 'collector' },
+      min: -90,
+      max: 90
+    },
+    longitude: { 
+      type: Number, 
+      required: function() { return this.role === 'collector' },
+      min: -180,
+      max: 180
+    }
   },
   { timestamps: true }
 )

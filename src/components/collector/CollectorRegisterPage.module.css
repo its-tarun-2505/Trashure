@@ -1,0 +1,422 @@
+/* Container and Layout */
+.container {
+  /* min-height: 100%; */
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  padding: 2rem 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.formCard {
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  padding: 3rem;
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* Typography */
+.title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #2d3748;
+  text-align: center;
+  margin-bottom: 2rem;
+  letter-spacing: -0.025em;
+}
+
+.sectionTitle {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #4a5568;
+  margin-bottom: 1.5rem;
+  border-bottom: 2px solid #e2e8f0;
+  padding-bottom: 0.5rem;
+}
+
+.sectionDescription {
+  color: #718096;
+  font-size: 0.95rem;
+  margin-bottom: 1.5rem;
+  line-height: 1.5;
+}
+
+/* Form Layout */
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* Input Groups */
+.inputGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.label {
+  font-weight: 600;
+  color: #4a5568;
+  font-size: 0.95rem;
+  margin-bottom: 0.25rem;
+}
+
+.input {
+  padding: 0.875rem 1rem;
+  border: 2px solid #e2e8f0;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: all 0.2s ease;
+  background: white;
+  color: #2d3748;
+}
+
+.input:focus {
+  outline: none;
+  border-color: #4299e1;
+  box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.1);
+}
+
+.input::placeholder {
+  color: #a0aec0;
+}
+
+.inputError {
+  border-color: #e53e3e;
+  box-shadow: 0 0 0 3px rgba(229, 62, 62, 0.1);
+}
+
+.errorText {
+  color: #e53e3e;
+  font-size: 0.875rem;
+  font-weight: 500;
+  margin-top: 0.25rem;
+}
+
+/* Location Section */
+.locationSection {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.locationHeader {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1.5rem;
+  background: #f8f9fa;
+  border: 1px solid #e9ecef;
+  border-radius: 12px;
+}
+
+/* Search Container */
+.searchContainer {
+  display: flex;
+  gap: 0.75rem;
+  width: 100%;
+}
+
+.searchInput {
+  flex: 1;
+  padding: 0.875rem 1rem;
+  border: 2px solid #e2e8f0;
+  border-radius: 8px;
+  font-size: 1rem;
+  background: white;
+  color: #2d3748;
+  transition: all 0.2s ease;
+}
+
+.searchInput:focus {
+  outline: none;
+  border-color: #4299e1;
+  box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.1);
+}
+
+.searchInput::placeholder {
+  color: #a0aec0;
+}
+
+.searchButton {
+  padding: 0.875rem 1.5rem;
+  background: linear-gradient(135deg, #4299e1 0%, #3182ce 100%);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.searchButton:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(66, 153, 225, 0.3);
+}
+
+.searchButton:active {
+  transform: translateY(0);
+}
+
+/* Selected Location Display */
+.selectedLocation {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  padding: 1rem;
+  background: white;
+  border: 1px solid #dee2e6;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.locationIcon {
+  font-size: 1.25rem;
+  margin-top: 0.125rem;
+}
+
+.locationInfo {
+  flex: 1;
+}
+
+.locationLabel {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #6c757d;
+  margin-bottom: 0.25rem;
+}
+
+.locationAddress {
+  font-size: 0.95rem;
+  color: #495057;
+  line-height: 1.4;
+}
+
+/* Map Container */
+.mapContainer {
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border: 2px solid #e2e8f0;
+}
+
+.map {
+  width: 100%;
+  height: 400px;
+  border-radius: 8px;
+}
+
+.mapLoading {
+  height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f8f9fa;
+  border: 2px solid #e9ecef;
+  border-radius: 8px;
+  color: #6c757d;
+  font-size: 1rem;
+}
+
+/* Coordinate Inputs */
+.coordinateContainer {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.coordinateInput {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+/* Submit Button */
+.submitButton {
+  background: linear-gradient(135deg, #48bb78 0%, #38a169 100%);
+  color: white;
+  border: none;
+  padding: 1rem 2rem;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin-top: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.025em;
+  box-shadow: 0 4px 12px rgba(72, 187, 120, 0.3);
+}
+
+.submitButton:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(72, 187, 120, 0.4);
+}
+
+.submitButton:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.submitButton:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .container {
+    padding: 1rem 0.5rem;
+  }
+
+  .formCard {
+    padding: 2rem 1.5rem;
+    margin: 0;
+    border-radius: 12px;
+  }
+
+  .title {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .sectionTitle {
+    font-size: 1.25rem;
+  }
+
+  .coordinateContainer {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+
+  .locationHeader {
+    padding: 1rem;
+  }
+
+  .searchContainer {
+    flex-direction: column;
+  }
+
+  .searchButton {
+    width: 100%;
+  }
+
+  .selectedLocation {
+    padding: 0.75rem;
+  }
+
+  .locationAddress {
+    font-size: 0.9rem;
+  }
+
+  .map {
+    height: 300px;
+  }
+
+  .submitButton {
+    padding: 0.875rem 1.5rem;
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .formCard {
+    padding: 1.5rem 1rem;
+  }
+
+  .title {
+    font-size: 1.75rem;
+  }
+
+  .input {
+    padding: 0.75rem 0.875rem;
+  }
+
+  .map {
+    height: 250px;
+  }
+}
+
+/* Loading State */
+.submitButton:disabled {
+  background: linear-gradient(135deg, #a0aec0 0%, #718096 100%);
+  box-shadow: 0 4px 12px rgba(160, 174, 192, 0.3);
+}
+
+/* Focus States for Accessibility */
+.input:focus,
+.searchInput:focus,
+.submitButton:focus {
+  outline: 2px solid #4299e1;
+  outline-offset: 2px;
+}
+
+/* Animation for form sections */
+.section {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Map loading state */
+.mapContainer::before {
+  content: 'Loading map...';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #718096;
+  font-size: 0.95rem;
+  z-index: 1;
+}
+
+.mapContainer {
+  position: relative;
+}
+
+.mapContainer.loaded::before {
+  display: none;
+}
+
+/* Error state styling */
+.inputGroup.error .label {
+  color: #e53e3e;
+}
+
+/* Success state for coordinates */
+.coordinateInput.success .input {
+  border-color: #48bb78;
+  background-color: #f0fff4;
+}
+
+/* Hover effects for interactive elements */
+.input:hover:not(:focus) {
+  border-color: #cbd5e0;
+}
+
+.searchInput:hover:not(:focus) {
+  border-color: #cbd5e0;
+}
+

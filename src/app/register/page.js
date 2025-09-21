@@ -3,6 +3,7 @@ import React from 'react'
 import { FaTruck, FaUserCircle } from 'react-icons/fa'
 import styles from './register.module.css'
 import CitizenRegisterPage from '@/components/citizen/CitizenRegisterPage'
+import CollectorRegisterPage from '@/components/collector/CollectorRegisterPage'
 
 const SelectProfile = () => {
   const [showCitizenRegistrationPage, setShowCitizenRegistrationPage] = React.useState(false);
@@ -17,7 +18,7 @@ const SelectProfile = () => {
           </p>
 
           <div className={styles.grid}>
-            <button className={styles.card} aria-label="Collector">
+            <button className={styles.card} aria-label="Collector" onClick={() => {setShowCollectorRegistrationPage(true); setShowCitizenRegistrationPage(false)}}>
               <div className={styles.iconWrap}>
                 <FaTruck className={styles.icon} />
               </div>
@@ -27,7 +28,7 @@ const SelectProfile = () => {
               </div>
             </button>
 
-            <button className={styles.card} aria-label="Citizen" onClick={()=>setShowCitizenRegistrationPage(true)}>
+            <button className={styles.card} aria-label="Citizen" onClick={()=> {setShowCitizenRegistrationPage(true);  setShowCollectorRegistrationPage(false)}}>
               <div className={styles.iconWrap}>
                 <FaUserCircle className={styles.icon} />
               </div>
@@ -42,6 +43,7 @@ const SelectProfile = () => {
         </section>
       </main>
       {showCitizenRegistrationPage && <CitizenRegisterPage/>}
+      {showCollectorRegistrationPage && <CollectorRegisterPage/>}
     </>
   )
 }

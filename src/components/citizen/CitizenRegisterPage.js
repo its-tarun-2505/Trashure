@@ -7,6 +7,7 @@ import styles from './CitizenRegisterPage.module.css'
 export default function RegisterPage() {
   const router = useRouter()
   const [form, setForm] = useState({
+    role: 'citizen',
     name: '',
     email: '',
     phone: '',
@@ -122,7 +123,7 @@ export default function RegisterPage() {
           {success && <div className={styles.success}>{success}</div>}
 
           <button type="submit" className={styles.submit} disabled={loading}>
-            {loading ? 'Registering…' : 'Register'}
+            {loading ? 'Creating Account...' : 'Create Account'}
           </button>
 
           <div className={styles.loginNote}>
