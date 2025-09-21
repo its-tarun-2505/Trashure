@@ -239,24 +239,6 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - **React Icons** for the beautiful icon set
 - **Community contributors** for feedback and suggestions
 
-## 📞 Support
-
-If you encounter any issues or have questions:
-
-1. **Check** the [Issues](https://github.com/yourusername/trashure/issues) page
-2. **Create** a new issue with detailed information
-3. **Contact** the development team
-
-## 🔮 Roadmap
-
-- [ ] Mobile app development (React Native)
-- [ ] Advanced analytics and reporting
-- [ ] Integration with IoT waste sensors
-- [ ] Multi-language support
-- [ ] Advanced route optimization algorithms
-- [ ] Real-time chat between citizens and collectors
-- [ ] Gamification features for environmental impact
-
 ---
 
 **Made with ❤️ for a cleaner, greener future!**
