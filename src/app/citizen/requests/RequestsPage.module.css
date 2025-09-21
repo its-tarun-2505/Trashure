@@ -1,15 +1,5 @@
 /* Dashboard - refreshed, responsive styles using EcoCollect green theme */
 
-:root{
-  --bg: #f6faf5;
-  --card: #ffffff;
-  --muted: #6b7280;
-  --text: #16311f;
-  --accent: #2f8a3a;
-  --border: #eef3ec;
-  --shadow: 0 14px 40px rgba(16,24,32,0.06);
-}
-
 /* page ------------------------------------------------------------- */
 .wrap {
   padding: 28px;

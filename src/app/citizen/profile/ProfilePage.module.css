@@ -1,13 +1,3 @@
-:root {
-  --bg: #f9fdf9;
-  --card: #ffffff;
-  --muted: #6b7280;
-  --text: #10241a;
-  --accent: #2f8a3a;
-  --danger: #d0443e;
-  --shadow: 0 8px 28px rgba(16, 24, 32, 0.08);
-}
-
 .wrap {
   padding: 32px;
   background: var(--bg);
