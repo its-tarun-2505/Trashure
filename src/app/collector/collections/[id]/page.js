@@ -286,7 +286,7 @@ const CollectionDetailPage = () => {
             {collection.rejectionFeedback && (
               <div className={styles.rejectionFeedback}>
                 <h5>Citizen Feedback:</h5>
-                <p>"{collection.rejectionFeedback}"</p>
+                <p>&ldquo;{collection.rejectionFeedback}&rdquo;</p>
                 <p className={styles.rejectionDate}>
                   Rejected on: {new Date(collection.rejectedAt).toLocaleString()}
                 </p>

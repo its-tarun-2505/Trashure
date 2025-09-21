@@ -418,7 +418,7 @@ export default function TrackRequestPage() {
             </div>
             <div className={styles.modalBody}>
               <p className={styles.rejectDescription}>
-                Please provide feedback explaining why you're rejecting this completion request. 
+                Please provide feedback explaining why you&apos;re rejecting this completion request. 
                 The collector will be notified and can resubmit with improvements.
               </p>
               <div className={styles.feedbackSection}>
