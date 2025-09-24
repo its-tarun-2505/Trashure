@@ -373,11 +373,6 @@
   transform: translateY(-1px);
 }
 
-.approvalActions {
-  display: flex;
-  gap: 1rem;
-}
-
 .approveBtn {
   display: flex;
   align-items: center;
@@ -393,6 +388,7 @@
   transition: all 0.3s ease;
   flex: 1;
   justify-content: center;
+  margin-bottom: 1rem;
 }
 
 .approveBtn:hover:not(:disabled) {

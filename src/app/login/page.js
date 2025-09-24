@@ -52,7 +52,7 @@ export default function LoginPage() {
   const roles = [
     { id: 'citizen', label: 'Citizen' },
     { id: 'collector', label: 'Collector' },
-    { id: 'admin', label: 'Admin' },
+    // { id: 'admin', label: 'Admin' },
   ]
 
   return (
@@ -99,7 +99,7 @@ export default function LoginPage() {
           </label>
 
           <div className={styles.row}>
-            <a className={styles.forgot} href="/forgot-password">Forgot Password?</a>
+            {/* <a className={styles.forgot} href="/forgot-password">Forgot Password?</a> */}
           </div>
 
           {error && <div className={styles.error}>{error}</div>}
